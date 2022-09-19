@@ -15,4 +15,11 @@ describe ('validate()', () =>{
 
         expect(validate(blockchain.blocks)).toBe(true);
     });
+
+    it ('Invalidando cadena con un genesis block corrupto',() =>{
+        blockchain.blocks[0].data = 'h4ck-data';
+        expect(() => {
+            validate(blockchain.blocks);
+        }).toThrowError('Previous hash invalido');
+    });
 });
