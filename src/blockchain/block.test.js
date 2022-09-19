@@ -1,0 +1,48 @@
+import Block from './block';
+
+describe('Block', () =>
+ {
+    let timestamp;
+    let previousBlock;
+    let data;
+    let hash;
+
+
+    beforeEach(() => 
+    {
+        timestamp = new Date(2010, 0, 1);
+        previousBlock = Block.genesis;
+        data = 'transaction0';
+        hash = "hash0";
+    });
+
+    it('crear instancia con parametros', () => 
+    {
+        const block = new Block(timestamp, previousBlock.hash, hash, data);
+        expect(block.timestamp).toEqual(timestamp);
+        expect(block.previousHash).toEqual(previousBlock.hash);
+        expect(block.data).toEqual(data);
+        expect(block.hash).toEqual(hash);
+    });
+
+    it('Usando static mine', () => 
+    {
+        const block = Block.mine(previousBlock, data);
+        expect(block.hash.length).toEqual(64);
+        expect(block.previousHash).toEqual(previousBlock.hash);
+        expect(data).toEqual(data);
+    });
+
+    it('Usando static hash', () => 
+    {
+        hash = Block.hash(timestamp, previousBlock.hash, data);
+        const hasOutput = "46eb732bc84bb6108a461d2ee0089238d6773f709a0c73ecc1a914f48783517f";
+        expect(hash).toEqual(hasOutput);
+    });
+
+    it('Usando toString', () => 
+    {
+        const block = Block.mine(previousBlock, data);
+        expect(typeof block.toString()).toEqual('string');
+    });
+});

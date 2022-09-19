@@ -6,6 +6,8 @@ console.log(`${name} v${version}`);
 
 const {genesis} = Block;
 console.log(genesis.toString());
+const block1 = Block.mine(genesis, 'trasact1');
+console.log(block1.toString());
 
 const block = Block.mine(genesis, 'd4t4-bn');
 console.log(block.toString());
