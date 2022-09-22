@@ -3,6 +3,7 @@ import validate from "./validate";
 
 describe('validate()', () => {
     let blockchain;
+ 
 
     beforeEach(() => {
         blockchain = new Blockchain();
@@ -41,4 +42,8 @@ describe('validate()', () => {
 
         }).toThrowError('Hash Invalido');
     });
+
+        //21-09-2022
+    
+    
 });
