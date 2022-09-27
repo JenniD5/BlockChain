@@ -9,6 +9,10 @@ const app = express();
 const blockchain = new Blockchain();
 
 app.use(bodyParser.json());
+app.get('/block',(req,res) => {
+    res.json(blockchain.blocks)
+});
+
 app.listen(HTTP_PORT, () =>{
     
     console.log(`Service HTTP: ${HTTP_PORT} listening...`)
