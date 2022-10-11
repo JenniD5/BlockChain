@@ -24,7 +24,8 @@
     "body-parser": "^1.20.0",
     "crypto-js": "^4.1.1",
     "crypto.js": "^3.0.0",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "ws": "^8.9.0"
   },
   "jest": {
     "silent": true,
