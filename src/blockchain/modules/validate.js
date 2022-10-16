@@ -5,11 +5,11 @@ export default (blockchain) => {
 
     if (JSON.stringify(genesisBlock) !== JSON.stringify(Block.genesis)) throw Error('Bloque Genesis Invalido');
 
-    for(let i = 0; i < blocks.length; i +=1) {
+    for (let i = 0; i < blocks.length; i +=1){
         const {
             previousHash, timestamp, hash, data,
         } = blocks[i];
-
+        
         const previousBlock = blockchain[i];
 
         if (previousHash !== previousBlock.hash) throw Error('Hash previo invalido o corrupto');
