@@ -1,13 +1,14 @@
-import Block from './block';
+import Block from "./block";
 import validate from './modules/validate';
 
-class Blockchain{
+class Blockchain {
     constructor() {
         this.blocks = [Block.genesis];
     }
 
-    addBlock(data) {
-        const previousBlock = this.blocks[this.blocks.length -1];
+    
+    addBlock(data){
+        const previousBlock = this.blocks[this.blocks.length - 1];
         const block = Block.mine(previousBlock, data);
 
         this.blocks.push(block);
@@ -16,7 +17,7 @@ class Blockchain{
     }
 
     replace(newBlocks = []) {
-        if (newBlocks.length < this.blocks.length) throw Error('La cadena recibida no es más larga que la cadena actual.');
+        if (newBlocks.length < this.blocks.length) throw Error('Cadena recebida no tiene la longitud correcta.');
         try {
           validate(newBlocks);
         } catch (error) {
@@ -26,7 +27,7 @@ class Blockchain{
         this.blocks = newBlocks;
     
         return this.blocks;
-    }
+      }
 }
 
 export default Blockchain;

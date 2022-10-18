@@ -6,11 +6,11 @@ describe('Block', () => {
     let data;
     let hash;
 
-    beforeEach(() => {
+    beforeEach( () => {
         timestamp = new Date(2010, 0, 1);
         previousBlock = Block.genesis;
-        data = 'transct0';
-        hash = "hash0";
+        data = 'transaction0';
+        hash = 'hash0';
     });
 
     it('Crear instancia con parametros', () => {
@@ -20,9 +20,9 @@ describe('Block', () => {
         expect(block.previousHash).toEqual(previousBlock.hash);
         expect(block.data).toEqual(data);
         expect(block.hash).toEqual(hash);
-    });
+    }); 
 
-    it('usando static mine', () => {
+    it('Usando static mine', ()=> {
         const block = Block.mine(previousBlock, data);
 
         expect(block.hash.length).toEqual(64);
@@ -30,15 +30,15 @@ describe('Block', () => {
         expect(data).toEqual(data);
     });
 
-    it('usando static hash', () => {
+    it('Usando static hash', ()=> {
         hash = Block.hash(timestamp, previousBlock.hash, data);
-        const hasOutput = "d32a24806ba05e9e78da28f11e7f39acfa027e798ab6686dce96743e5ab0ac9a";
+        const hasOutput = "332f4bc930745c632d39f9d91b2638b677dad3688a124a13b64922dd8a41a0c6";
 
         expect(hash).toEqual(hasOutput);
     });
 
-    it('usando toString', () => {
-        const block = Block.mine(previousBlock, data);
+    it('Usando toString', ()=> {
+        const block = Block.mine(previousBlock.data);
 
         expect(typeof block.toString()).toEqual('string');
     });
